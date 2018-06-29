@@ -1,7 +1,7 @@
 import requests, csv
 
 def scrapeResultsData():
-    optimizely_token = '5cbbbfb036976288674fb0866345d84049fb8b9971e1d4bd2c187264999814d6:mYAXaLvpm'
+    optimizely_token = 'CLASSIC TOKEN'
 
     all_project_info = {}
     all_experiment_data = {}
