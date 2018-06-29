@@ -36,7 +36,6 @@ def scrapeResultsData():
      filewriter = csv.writer(csvfile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
      for experiment in all_experiment_data:
-        filewriter.writerow([all_experiment_data[experiment]['status']])
         each_experiment_info = requests.get(
             'https://www.optimizelyapis.com/experiment/v1/experiments/' + experiment + '/stats/',
             headers={'Token': optimizely_token})
