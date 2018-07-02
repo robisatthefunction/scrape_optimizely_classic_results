@@ -31,7 +31,7 @@ def scrapeResultsData():
                     "status": experiment['status']
                 }
 
-    # get all the experiment results
+    # get all the experiment results and write them to a CSV file
     with open('Optimizely_Classic_Experiments.csv', 'w') as csvfile:
      filewriter = csv.writer(csvfile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
@@ -54,6 +54,7 @@ def scrapeResultsData():
                     filewriter.writerow(['Conversion Rate: ' + str(variation['conversion_rate'])])
                 else:
                     filewriter.writerow(['Revenue Per Visitor: ' + str(variation['revenue_per_visitor'])])
+                    filewriter.writerow(['Revenue: ' + str(variation['revenue'])])
                 filewriter.writerow(['Statistical Significance: ' + str(variation['statistical_significance'])])
                 filewriter.writerow(['Status: ' + variation['status']])
                 filewriter.writerow(['------'])
