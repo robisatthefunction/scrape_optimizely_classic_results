@@ -1,7 +1,10 @@
-import requests, csv
+import requests, csv, argparse
 
 def scrapeResultsData():
-    optimizely_token = '5cbbbfb036976288674fb0866345d84049fb8b9971e1d4bd2c187264999814d6:mYAXaLvpm'
+    parser = argparse.ArgumentParser()
+    parser.add_argument("token", help="paste your Optimizely v1 REST API token here")
+    args = parser.parse_args()
+    optimizely_token = args.token
 
     all_project_info = {}
     all_experiment_data = {}
