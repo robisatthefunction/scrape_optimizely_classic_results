@@ -10,9 +10,10 @@ If you have Python 3 downloaded and installed on your computer begin with step 1
 ```
 pip3 install requests
 ```
-4. Run
+4. Generate your own [Optimizely v1 REST API Token](https://help.optimizely.com/Integrate_Other_Platforms/Generate_an_API_token_in_Optimizely_Classic)
+5. Run
 ```
-python3 app.py your API Token
+python3 app.py <your API Token>
 ```
 
 All of your Optimizely Classic experiment results should be in a csv file in the scrape_optimizely_classic_results directory
