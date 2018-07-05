@@ -1,9 +1,9 @@
 # Scrape Optimizely Classic Results
-By running this Python script in your own Python 3 environment you will be able to get all of your Optimizely Classic Experiment Results organized in a CSV file.
+By running this Python script in your own Python 3 environment you will be able to get all of your Optimizely Classic Experiment Results organized in one CSV file.
 
 ## Steps
-If you have Python 3 downloaded and installed on your computer begin with step 1, if not download and install Python 3 to your computer [here](https://www.python.org/downloads/)
-1. Clone this git repository
+If you have Python 3 downloaded and installed on your computer then begin with step 1, if not, download and install Python 3 on your computer [here](https://www.python.org/downloads/)
+1. Clone this github repository
 2. cd into the scrape_optimizely_classic_results directory
 * Optional: Activate your virtual environment
 3. Run
