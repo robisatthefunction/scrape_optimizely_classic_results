@@ -35,7 +35,7 @@ def scrapeResultsData():
                 }
 
     # get all the experiment results
-    with open('Optimizely_Classic_Experiments.csv', 'w') as csvfile:
+    with open('Optimizely_Classic_Experiments_Results.csv', 'w') as csvfile:
      filewriter = csv.writer(csvfile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
      for experiment in all_experiment_data:
