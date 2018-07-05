@@ -1,7 +1,7 @@
 import requests, csv
 
 def scrapeResultsData():
-    optimizely_token = 'CLASSIC TOKEN'
+    optimizely_token = '5cbbbfb036976288674fb0866345d84049fb8b9971e1d4bd2c187264999814d6:mYAXaLvpm'
 
     all_project_info = {}
     all_experiment_data = {}
@@ -31,7 +31,7 @@ def scrapeResultsData():
                     "status": experiment['status']
                 }
 
-    # get all the experiment results and write them to a CSV file
+    # get all the experiment results
     with open('Optimizely_Classic_Experiments.csv', 'w') as csvfile:
      filewriter = csv.writer(csvfile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
@@ -40,23 +40,23 @@ def scrapeResultsData():
             'https://www.optimizelyapis.com/experiment/v1/experiments/' + experiment + '/stats/',
             headers={'Token': optimizely_token})
         if each_experiment_info.status_code == 200:
-            filewriter.writerow(['Project Name: ' + str(all_experiment_data[experiment]['project_name'])])
-            filewriter.writerow(['Project ID: ' + str(all_experiment_data[experiment]['project_id'])])
-            filewriter.writerow(['Experiment Name: ' + str(all_experiment_data[experiment]['experiment_name'])])
-            filewriter.writerow(['Experiment ID: ' + str(experiment)])
-            filewriter.writerow(['Experiment Sharable Results Link: ' + str(all_experiment_data[experiment]['results_link'])])
+            filewriter.writerow(['Project Name: %s' % (str(all_experiment_data[experiment]['project_name']))])
+            filewriter.writerow(['Project ID: %s' % (str(all_experiment_data[experiment]['project_id']))])
+            filewriter.writerow(['Experiment Name: %s' % (str(all_experiment_data[experiment]['experiment_name']))])
+            filewriter.writerow(['Experiment ID: %s' % (str(experiment))])
+            filewriter.writerow(['Experiment Sharable Results Link: %s' % (str(all_experiment_data[experiment]['results_link']))])
             resultsJson = each_experiment_info.json()
             for variation in resultsJson:
                 filewriter.writerow(['------'])
-                filewriter.writerow(['Goal Name: ' + variation['goal_name']])
-                filewriter.writerow(['Variation Name: ' + variation['variation_name']])
+                filewriter.writerow(['Goal Name: %s' % (str(variation['goal_name']))])
+                filewriter.writerow(['Variation Name: %s' % (str(variation['variation_name']))])
                 if variation['is_revenue'] == False:
-                    filewriter.writerow(['Conversion Rate: ' + str(variation['conversion_rate'])])
+                    filewriter.writerow(['Conversion Rate: %s' % (str(variation['conversion_rate']))])
                 else:
-                    filewriter.writerow(['Revenue Per Visitor: ' + str(variation['revenue_per_visitor'])])
-                    filewriter.writerow(['Revenue: ' + str(variation['revenue'])])
-                filewriter.writerow(['Statistical Significance: ' + str(variation['statistical_significance'])])
-                filewriter.writerow(['Status: ' + variation['status']])
+                    filewriter.writerow(['Revenue Per Visitor: %s' % (str(variation['revenue_per_visitor']))])
+                    filewriter.writerow(['Revenue: %s' % (str(variation['revenue']))])
+                filewriter.writerow(['Statistical Significance: %s' % (str(variation['statistical_significance']))])
+                filewriter.writerow(['Status: %s' % (str(variation['status']))])
                 filewriter.writerow(['------'])
             filewriter.writerow(['------------------------------------'])
 
