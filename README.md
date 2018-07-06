@@ -16,4 +16,4 @@ pip3 install requests
 python3 app.py <your API Token>
 ```
 
-All of your Optimizely Classic experiment results should be in a csv file in the scrape_optimizely_classic_results directory
+All of your Optimizely Classic experiment results should be in a csv file called Optimizely_Classic_Experiment_Results.csv in the scrape_optimizely_classic_results directory.
