@@ -3,6 +3,8 @@ By running this Python script in your own Python 3 environment you will be able 
 
 ## Steps
 If you have Python 3 downloaded and installed on your computer then begin with step 1, if not, download and install Python 3 on your computer [here](https://www.python.org/downloads/)
+
+In your CLI
 1. Clone this github repository
 2. cd into the scrape_optimizely_classic_results directory
 * Optional: Activate your virtual environment
@@ -16,4 +18,4 @@ pip3 install requests
 python3 app.py <your API Token>
 ```
 
-All of your Optimizely Classic experiment results should be in a csv file called Optimizely_Classic_Experiment_Results.csv in the scrape_optimizely_classic_results directory.
+Once the script has finished running, all of your Optimizely Classic experiment results should be in a csv file called Optimizely_Classic_Experiment_Results.csv in the scrape_optimizely_classic_results directory.
