@@ -18,7 +18,7 @@ def scrapeResultsData():
             "project_id": project['id']
         }
 
-    # get all the experiments
+    # get all the experiments in each project
     for project in all_project_info:
         all_experiment_info = requests.get(
             'https://www.optimizelyapis.com/experiment/v1/projects/' + project + '/experiments/',
@@ -35,7 +35,7 @@ def scrapeResultsData():
                 }
 
     # get all the experiment results
-    with open('Optimizely_Classic_Experiment_Results.csv', 'w') as csvfile:
+    with open('example.csv', 'w') as csvfile:
      filewriter = csv.writer(csvfile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
      for experiment in all_experiment_data:
@@ -43,12 +43,14 @@ def scrapeResultsData():
             'https://www.optimizelyapis.com/experiment/v1/experiments/' + experiment + '/stats/',
             headers={'Token': optimizely_token})
         if each_experiment_info.status_code == 200:
+            resultsJson = each_experiment_info.json()
             filewriter.writerow(['Project Name: %s' % (str(all_experiment_data[experiment]['project_name']))])
             filewriter.writerow(['Project ID: %s' % (str(all_experiment_data[experiment]['project_id']))])
             filewriter.writerow(['Experiment Name: %s' % (str(all_experiment_data[experiment]['experiment_name']))])
             filewriter.writerow(['Experiment ID: %s' % (str(experiment))])
             filewriter.writerow(['Experiment Sharable Results Link: %s' % (str(all_experiment_data[experiment]['results_link']))])
-            resultsJson = each_experiment_info.json()
+            filewriter.writerow(['Begin Time: %s' % (str(resultsJson[0]['begin_time']))])
+            filewriter.writerow(['End Time: %s' % (str(resultsJson[0]['end_time']))])
             for variation in resultsJson:
                 filewriter.writerow(['------'])
                 filewriter.writerow(['Goal Name: %s' % (str(variation['goal_name']))])
