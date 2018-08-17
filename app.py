@@ -49,9 +49,11 @@ def scrapeResultsData():
             filewriter.writerow(['Experiment Name: %s' % (str(all_experiment_data[experiment]['experiment_name']))])
             filewriter.writerow(['Experiment ID: %s' % (str(experiment))])
             filewriter.writerow(['Experiment Sharable Results Link: %s' % (str(all_experiment_data[experiment]['results_link']))])
-            filewriter.writerow(['Begin Time: %s' % (str(resultsJson[0]['begin_time']))])
-            filewriter.writerow(['End Time: %s' % (str(resultsJson[0]['end_time']))])
-            for variation in resultsJson:
+            if len(resultsJson) > 0:
+                filewriter.writerow(['Begin Time: %s' % (str(resultsJson[0]['begin_time']))])
+                filewriter.writerow(['End Time: %s' % (str(resultsJson[0]['end_time']))])
+            sortedResults = sorted(resultsJson, key=lambda k: k['goal_name'])
+            for variation in sortedResults:
                 filewriter.writerow(['------'])
                 filewriter.writerow(['Goal Name: %s' % (str(variation['goal_name']))])
                 filewriter.writerow(['Variation Name: %s' % (str(variation['variation_name']))])

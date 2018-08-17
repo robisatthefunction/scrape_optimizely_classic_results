@@ -18,4 +18,4 @@ pip3 install requests
 python3 app.py <your API Token>
 ```
 
-Once the script has finished running, all of your Optimizely Classic experiment results should be in a csv file called Optimizely_Classic_Experiment_Results.csv in the scrape_optimizely_classic_results directory.
+The script can take up to 8 hours to run if there are 200+ experiments in the account. Once it is finished, all of your Optimizely Classic experiment results should be in a csv file called Optimizely_Classic_Experiment_Results.csv in the scrape_optimizely_classic_results directory.
